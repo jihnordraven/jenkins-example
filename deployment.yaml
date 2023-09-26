@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-test-deployment
+  name: test-deployment
   labels:
-    app: simple-test-deployment
+    app: test-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: simple-test
+      app: test
   template:
     metadata:
       labels:
-        app: simple-test
+        app: test
     spec:
       containers:
-        - name: simple-test-container
-          image: simple-test-image
+        - name: test-container
+          image: test-image
           ports:
-            - containerPort: 3000
+            - containerPort: 4200
