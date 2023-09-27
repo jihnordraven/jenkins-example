@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage("Hello") {
+        stage("First-job") {
             steps {
                 echo "Preparing..."
-                echo "Hello World"
-                echo "Finished"
+                echo "Execution..."
+                echo "Finished successfully"
             }
         }
     }
