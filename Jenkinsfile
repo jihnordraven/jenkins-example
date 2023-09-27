@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo "Preparing..."
                 echo "Hello World"
-                echo "Ending..."
+                echo "Finished"
             }
         }
     }
