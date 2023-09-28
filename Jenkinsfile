@@ -3,19 +3,21 @@ pipeline {
 
     stages {
         stage("Unit test") {
-            echo "Start unit test"
             steps {
+                echo "Start unit test"
                 // sh "npm install"
                 // sh "npm run test"
-            }
             echo "Finish unit test"
+            }
         }
         stage("E2e test") {
-            echo "Start e2e test"
-            script {
-                // sh "npm run test:e2e"
+            steps {
+                echo "Start e2e test"
+                script {
+                    // sh "npm run test:e2e"
+                }
+                echo "Finish e2e test"
             }
-            echo "Finish e2e test"
         }
         stage("Build docker image") {
             steps {
