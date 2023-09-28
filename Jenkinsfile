@@ -13,9 +13,9 @@ pipeline {
         stage("E2e test") {
             steps {
                 echo "Start e2e test"
-                script {
-                    // sh "npm run test:e2e"
-                }
+                // script {
+                //     sh "npm run test:e2e"
+                // }
                 echo "Finish e2e test"
             }
         }
