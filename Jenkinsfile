@@ -19,6 +19,4 @@ pipeline {
         //     }
         // }
     }
-    // fjdasjfsadkf
-    //fdsfsd
 }
