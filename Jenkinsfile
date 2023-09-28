@@ -30,7 +30,7 @@ pipeline {
             steps {
                 echo "Start building docker image"
                 script {
-                    app = docker.build("jihnordraven/simple-test")
+                    sh "docker build -t jihnordraven/simple-test:latest ."
                 }
                 echo "Finish buildiing docker image"
             }
