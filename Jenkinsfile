@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("Start") {
             steps {
-                echo "Start Jenkins"
+                echo "Start Jenkins CI/CD"
             }
         }
         stage("Checkout SCM") {
@@ -18,38 +18,33 @@ pipeline {
             steps {
                 echo "Start building docker image"
                 script {
-                    sh "docker build -t jihnordraven/simple-test:latest ."
+                    sh "docker build -t flyingmerch123/simple-test:latest ."
                 }
                 echo "Finish building docker image"
             }
         }
-        // stage("Push docker image") {
-        //     steps {
-        //         echo "Start pushing docker image"
-        //         script {
-        //             sh "docker push jihnordraven/simple-test:latest"
-        //         }
-        //         echo "Finish pushing docker image"
-        //     }
-        // }
-        // stage("Deploy to kubernetes") {
-        //     steps {
-        //         echo "Start deploying to kubernetes"
-        //         script {
-        //             sh "kubectl apply -f deployment.yaml"
-        //             sh "kubectl apply -f loadBalancer.yaml"
-        //         }
-        //         echo "Finish deploying to kubernetes"
-        //     }
-        // }
-        // stage("Delete docker image localy") {
-        //     steps {
-        //         echo "Start deleting docker image localy"
-        //         script {
-        //             sh "Deletedocker rmi jihnordraven/simple-test:latest"
-        //         }
-        //         echo "Finish deleting docker image localy"
-        //     }
-        // }
+        stage("Push docker image") {
+            steps {
+                echo "Start pushing docker image"
+                script {
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                        sh "docker login -u flyingmerch123 -p ${dockerhubpwd}"
+                    }
+                    sh "docker push flyingmerch123/simple-test:latest"
+                }
+                echo "Finish pushing docker image"
+            }
+        }
+        stage("Delete local image") {
+            steps {
+                echo "Start deleting docker image"
+                echo "Finish deleting docker image"
+            }
+        }
+        stage("Finish") {
+            steps {
+                echo "Finish Jenkins CI/CD successfully"
+            }
+        }
     }
 }
