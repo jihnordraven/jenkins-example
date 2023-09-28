@@ -33,7 +33,7 @@ pipeline {
                 echo "Start pushing docker image"
                 script {
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                        sh "docker login -u flyingmerch13 -p Formula13"
+                        sh "docker login -u flyingmerch123 -p Formula13"
                     }
                     sh "docker push flyingmerch123/simple-test:latest"
                 }
