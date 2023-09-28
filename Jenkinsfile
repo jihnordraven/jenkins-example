@@ -16,7 +16,11 @@ pipeline {
         }
         stage("Build docker image") {
             steps {
-                echo "Build docker image"
+                echo "Start building docker image"
+                script {
+                    sh "docker build -t jihnordraven/simple-test:latest ."
+                }
+                echo "Finish building docker image"
             }
         }
     }
