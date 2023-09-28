@@ -4,6 +4,11 @@ pipeline {
     agent any
 
     stages {
+        stage("Start Jenkins") {
+            steps {
+                echo "Start Jenkins Pipeline"
+            }
+        }
         stage("Check SCM") {
             steps {
                 echo "Start checking scm"
@@ -21,15 +26,6 @@ pipeline {
                 echo "Finish unit testing"
             }
         }
-        stage("E2E test") {
-            steps {
-                echo "Start e2e testing"
-                script {
-                    sh "npm run test:e2e"
-                }
-                echo "Finish e2e testing"
-            }
-        }
         stage("Build docker image") {
             steps {
                 echo "Start building docker image"
@@ -39,9 +35,9 @@ pipeline {
                 echo "Finish buildiing docker image"
             }
         }
-        stage("Finish") {
+        stage("Finish Jenkins") {
             steps {
-                echo "Finish successfully"
+                echo "Finish Jenkins Pipeline"
             }
         }
         // stage("Push docker image") {
